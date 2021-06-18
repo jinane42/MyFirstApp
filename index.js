@@ -14,7 +14,7 @@
 const express = require("express");
 const app = express();
 
-const myFirstCOntroller = require("./controllers/controller")
+const backEndOne = require("./controllers/controller")
 
 // app setup
 app.use(express.json())
@@ -30,7 +30,12 @@ app.get('/',(req, res) => {
 
 // Create here your api setup
 
-
+app.post('/searchAnimal', (req, res) => {
+  //console.log('post searchAnimal ok')
+  backEndOne.getDB();
+  backEndOne.sendDBToFront();
+  console.log(req.body);
+})
 
 
 app.listen(3200, () => console.log("Server Up and running"));
